@@ -185,25 +185,44 @@ function draw(){
           ball.y + BALL_RADIUS > CANVAS_HEIGHT - PLAYER_BLOCK_HEIGHT && hitPaddle > 10){
           hitPaddle = 0;
           if(ball.x < playerBlock.x + (1/3) * PLAYER_BLOCK_WIDTH){
-
-            dy = -dy;
-            if(dx > 0 && dx < 5){
-              dx = dx*1.4;
+            if(ball.x < playerBlock.x + (1/10) * PLAYER_BLOCK_WIDTH){
+              dy = -dy;
+              if(dx > 0 && dx < 1){
+                dx = dx*5;
+              }
+              if(dx > 0){
+                dx = dx*0.7;
+              }
             }
-            if(dx < 0){
-              dx = dx*0.7;
+            else{
+              dy = -dy;
+              if(dx > 1 && dx < 5){
+                dx = dx*1.4;
+              }
+              if(dx < 0){
+                dx = dx*0.7;
+              }
             }
-
 
           }
           else if(ball.x > playerBlock.x + (2/3) * PLAYER_BLOCK_WIDTH){
-
-            dy = -dy;
-            if(dx < 0 && dx > -5) {
-              dx = dx*1.4;
+            if(ball.x > playerBlock.x + (9/10) * PLAYER_BLOCK_WIDTH){
+              dy = -dy;
+              if(dx > -1 && dx < 0){
+                dx = dx*5;
+              }
+              if(dx > 0){
+                dx = dx*0.7;
+              }
             }
-            if(dx > 0){
-              dx = dx*0.7;
+            else{
+              dy = -dy;
+              if(dx < 0 && dx > -5) {
+                dx = dx*1.4;
+              }
+              if(dx > 0){
+                dx = dx*0.7;
+              }
             }
           }
           else{

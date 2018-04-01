@@ -1,3 +1,15 @@
+<!--
+A simple breakout game where the player aims to remove all blocks from the gameboard.
+This is done by hitting them with the ball. The ball can be bounced back with the
+paddle on the bottom of the gameboard. The paddle can be moved with left and right keys.
+Once all blocks are cleared from the board, new blocks will spawn and new level
+will start. The game ends when the ball crosses the line on the bottom of the
+gameboard. Below the gameboard there are buttons that the player can use to
+
+
+
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +24,12 @@
 <canvas id='gameCanvas' width='720' height='720'></canvas>
 
 <center>
+<h4> Move with arrow keys </h4>
+<h4> Pause with 'P' </h4>
+
 <h2 id='level'> Level: 1 <h2>
 <h2 id='score'> Score: 0 <h2>
+
 
 <button id=submitScore> Submit score </button>
 <button id=saveGame> Save Game </button>

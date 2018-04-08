@@ -46,6 +46,8 @@ var playerBlock = {
 
 game();
 
+// Function that runs the game itself. This function also contains all event
+// listerners for the onscreen buttons, arrow keys and pause key.
 function game(){
 
   var message = {
@@ -55,6 +57,7 @@ function game(){
           "height": CANVAS_HEIGHT //Integer
       }
   };
+  window.parent.postMessage(message, "*");
   initialize();
 
   document.getElementById("submitScore").addEventListener("click", function(){
@@ -62,7 +65,7 @@ function game(){
       messageType: "SCORE",
       score: getScore()
     };
-    window.parent.postMessage(msg, "*");
+    window.parent.postMessage(message, "*");
     alert("Score submitted!");
 
   });
@@ -148,6 +151,7 @@ function game(){
   }, true);
 }
 
+// Function that loads game data
 function loadGame(data){
   ball.y = data.gameState.bally,
   ball.x = data.gameState.ballx,
@@ -160,6 +164,7 @@ function loadGame(data){
 
 function draw(){
     if(pause == false) {
+
       //clearing old frame
       ctx.clearRect(ball.x - BALL_RADIUS - 2, ball.y - BALL_RADIUS - 2, BALL_RADIUS*2+4, BALL_RADIUS*2+4);
       ctx.clearRect(historyX - 2, playerBlock.y - 1, PLAYER_BLOCK_WIDTH + 4 , PLAYER_BLOCK_HEIGHT + 1)
@@ -171,6 +176,7 @@ function draw(){
       if(ball.y< 0 + BALL_RADIUS){
         dy = -dy;
       }
+
       //game over
       if(ball.y > CANVAS_HEIGHT){
         alert('Game over! Press enter to continue or submit score.');
@@ -180,6 +186,7 @@ function draw(){
       }
 
       hitPaddle++;
+
       //hitting the playerblock
       if(ball.x + BALL_RADIUS>playerBlock.x && ball.x - BALL_RADIUS<playerBlock.x + PLAYER_BLOCK_WIDTH &&
           ball.y + BALL_RADIUS > CANVAS_HEIGHT - PLAYER_BLOCK_HEIGHT && hitPaddle > 10){
@@ -234,8 +241,6 @@ function draw(){
       ball.x -= dx;
       ball.y -= dy;
 
-
-
       collisionDetection();
 
       drawBlocks();
@@ -250,16 +255,18 @@ function draw(){
     }
 }
 
+// Function that returns the current score
 function getScore(){
   return parseFloat(score);
 }
 
+// Function that initilizes the blocks on the gameboard and begins the game
 function initialize(){
   drawBlocks();
   setInterval(draw, 8);
-
 }
 
+// Function that handles collisions between the ball and the blocks
 function collisionDetection(){
   for(i=0; i<BLOCK_ROW_COUNT; i++){
     for(j=0; j<BLOCK_COLUMN_COUNT; j++){
@@ -284,6 +291,7 @@ function collisionDetection(){
   }
 }
 
+// Function that handles drawing the blocks
 function drawBlocks() {
 
   var x = 15;

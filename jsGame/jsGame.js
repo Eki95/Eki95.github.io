@@ -53,8 +53,8 @@ function game(){
   var message = {
       messageType: "SETTING",
       options: {
-          "width": CANVAS_WIDTH, //Integer
-          "height": CANVAS_HEIGHT //Integer
+          width: CANVAS_WIDTH, //Integer
+          height: CANVAS_HEIGHT //Integer
       }
   };
   window.parent.postMessage(message, "*");
@@ -179,7 +179,12 @@ function draw(){
 
       //game over
       if(ball.y > CANVAS_HEIGHT){
-        alert('Game over! Press enter to continue or submit score.');
+        alert('Game over! Score submitted.');
+        var message = {
+          "messageType": "SCORE",
+          "score": getScore()
+        };
+        window.parent.postMessage(message, "*");
         score = 0;
         ball.y = -dy;
         location.reload();

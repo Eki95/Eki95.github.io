@@ -86,10 +86,10 @@ function game(){
     console.log("savegame pressed", message)
   });
   document.getElementById("loadGame").addEventListener("click", function(){
-    console.log("loading")
     var message = {
       messageType: "LOAD_REQUEST"
     };
+    window.parent.postMessage(message, "*");
   });
 
   window.addEventListener("message", function(e) {

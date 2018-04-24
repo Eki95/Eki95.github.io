@@ -54,7 +54,7 @@ function game(){
       messageType: "SETTING",
       options: {
           width: CANVAS_WIDTH, //Integer
-          height: CANVAS_HEIGHT + 400 //Integer
+          height: CANVAS_HEIGHT + 230 //Integer
       }
   };
   window.parent.postMessage(message, "*");

@@ -160,6 +160,9 @@ function loadGame(data){
   levelCount = data.gameState.level,
   blocks = data.gameState.blocks,
   score = data.gameState.score
+  pause = false
+  draw()
+  pause = true
 }
 
 function draw(){

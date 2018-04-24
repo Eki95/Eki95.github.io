@@ -155,7 +155,7 @@ function game(){
 function loadGame(data){
   //clearing old ball and paddle objects
   ctx.clearRect(ball.x - BALL_RADIUS - 2, ball.y - BALL_RADIUS - 2, BALL_RADIUS*2+4, BALL_RADIUS*2+4);
-  ctx.clearRect(historyX - 2, playerBlock.y - 1, PLAYER_BLOCK_WIDTH + 4 , PLAYER_BLOCK_HEIGHT + 1)
+  ctx.clearRect(playerblock.x - 1, playerBlock.y - 1, PLAYER_BLOCK_WIDTH + 2 , PLAYER_BLOCK_HEIGHT + 2)
 
   ball.y = data.gameState.bally,
   ball.x = data.gameState.ballx,
